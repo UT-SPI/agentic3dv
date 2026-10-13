@@ -1,16 +1,18 @@
 /* Agentic 3D Vision workshop site. Plain CSS, no build step. */
 
 :root {
-  /* Colors. The three axis colors match the hero figure. */
-  --paper: #f1f4f7;
+  /* Colors follow the UT Austin palette: burnt orange and charcoal, with limestone, blue, green, and gold in support. */
+  --paper: #ffffff;
+  --tint: #f4f2ec;
   --surface: #ffffff;
-  --ink: #14223a;
-  --muted: #55627a;
-  --rule: #d3dae3;
-  --axis-x: #d4412d;
-  --axis-y: #3f7d14;
-  --axis-z: #2466d6;
-  --select: #e8860c;
+  --ink: #333f48;
+  --muted: #5b6770;
+  --rule: #d6d2c4;
+  --orange: #bf5700;
+  --blue: #005f86;
+  --green: #579d42;
+  --green-text: #43802f;
+  --gold: #f8971f;
 
   --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
   --body: "Public Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -33,9 +35,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--axis-z); text-underline-offset: 3px; }
+a { color: var(--orange); text-underline-offset: 3px; }
 a:hover { color: var(--ink); }
-a:focus-visible { outline: 2px solid var(--axis-z); outline-offset: 3px; border-radius: 2px; }
+a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 2px; }
 
 .wrap { max-width: var(--width); margin: 0 auto; padding: 0 var(--gutter); }
 
@@ -48,7 +50,8 @@ a:focus-visible { outline: 2px solid var(--axis-z); outline-offset: 3px; border-
   position: sticky;
   top: 0;
   z-index: 5;
-  background: rgba(241, 244, 247, 0.92);
+  border-top: 4px solid var(--orange);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--rule);
 }
@@ -62,7 +65,7 @@ a:focus-visible { outline: 2px solid var(--axis-z); outline-offset: 3px; border-
 
 .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); align-items: center; gap: 24px; padding-top: clamp(32px, 6vw, 72px); padding-bottom: clamp(24px, 4vw, 48px); }
 
-.venue { margin: 0 0 18px; font-weight: 600; color: var(--muted); }
+.venue { margin: 0 0 18px; font-weight: 600; color: var(--orange); }
 
 h1 {
   margin: 0;
@@ -81,9 +84,10 @@ h1 {
 .spoke { stroke: var(--rule); stroke-width: 1.5; stroke-dasharray: 3 6; stroke-linecap: round; }
 .ring { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; }
 .head { fill: var(--ink); }
-.node.code, .label.code { fill: var(--axis-z); }
-.node.exec, .label.exec { fill: var(--axis-x); }
-.node.see, .label.see { fill: var(--axis-y); }
+.node.code, .label.code { fill: var(--blue); }
+.node.exec, .label.exec { fill: var(--orange); }
+.node.see { fill: var(--green); }
+.label.see { fill: var(--green-text); }
 .icon { fill: none; stroke: #fff; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
 .icon-fill { fill: #fff; }
 .label { font-family: var(--display); font-weight: 700; font-size: 18px; }
@@ -91,11 +95,11 @@ h1 {
 .bot-line { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; }
 .bot-eye { fill: var(--paper); }
 .bot-mouth { fill: none; stroke: var(--paper); stroke-width: 4; stroke-linecap: round; }
-.link { stroke: var(--axis-x); stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; }
+.link { stroke: var(--orange); stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; }
 .edge { stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
 .edge.hidden { stroke-dasharray: 2 6; opacity: 0.55; }
 .vert { fill: var(--ink); }
-.vert.selected { fill: var(--select); }
+.vert.selected { fill: var(--gold); }
 
 /* The cube edges draw in once when the page loads. */
 @media (prefers-reduced-motion: no-preference) {
@@ -105,7 +109,7 @@ h1 {
 
 /* ---------- Key facts ---------- */
 
-.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; border-top: 2px solid var(--orange); border-bottom: 1px solid var(--rule); }
 .facts div { padding: 16px 20px 18px 0; }
 .facts div + div { padding-left: 20px; border-left: 1px solid var(--rule); }
 .facts dt { font-size: 0.9rem; color: var(--muted); }
@@ -133,12 +137,12 @@ h1 {
 .schedule td.time { white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--muted); width: 9.5em; }
 .schedule td.what { font-weight: 600; }
 .schedule td.what span { display: block; font-weight: 400; color: var(--muted); font-size: 0.95rem; }
-.schedule tr.pause td { background: var(--paper); }
+.schedule tr.pause td { background: var(--tint); }
 .schedule tr.pause td.what { font-weight: 400; color: var(--muted); }
 /* Colored edge marks the kind of session. */
-.schedule tr.talk td.time { box-shadow: inset 3px 0 0 var(--axis-z); }
-.schedule tr.panel td.time { box-shadow: inset 3px 0 0 var(--axis-x); }
-.schedule tr.papers td.time { box-shadow: inset 3px 0 0 var(--axis-y); }
+.schedule tr.talk td.time { box-shadow: inset 3px 0 0 var(--blue); }
+.schedule tr.panel td.time { box-shadow: inset 3px 0 0 var(--orange); }
+.schedule tr.papers td.time { box-shadow: inset 3px 0 0 var(--green); }
 
 /* Important dates reuse the schedule table, with the label first. */
 .dates td.what { width: 50%; }
@@ -147,8 +151,8 @@ h1 {
 /* ---------- Speakers ---------- */
 
 .speakers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 20px 0 0; padding: 0; list-style: none; }
-.speakers li { display: flex; align-items: center; gap: 14px; padding: 16px; border: 1.5px dashed #aeb9c7; border-radius: 4px; }
-.slot { flex: none; width: 52px; height: 52px; border-radius: 50%; border: 1.5px dashed #aeb9c7; }
+.speakers li { display: flex; align-items: center; gap: 14px; padding: 16px; border: 1.5px dashed #bdb8a8; border-radius: 4px; }
+.slot { flex: none; width: 52px; height: 52px; border-radius: 50%; border: 1.5px dashed #bdb8a8; }
 .speakers strong { display: block; font-family: var(--display); line-height: 1.2; }
 .speakers span { color: var(--muted); font-size: 0.92rem; }
 
@@ -160,7 +164,7 @@ h1 {
 .avatar { grid-row: span 2; width: 80px; height: 80px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 1.2rem; object-fit: cover; }
 .people h3 { margin: 0; font-size: 1.2rem; line-height: 1.3; }
 .people h3 a { color: var(--ink); }
-.people h3 a:hover { color: var(--axis-z); }
+.people h3 a:hover { color: var(--orange); }
 .people h3 span { font-family: var(--body); font-weight: 400; font-size: 0.98rem; color: var(--muted); margin-left: 6px; }
 .people p { margin: 0; grid-column: 2; }
 
