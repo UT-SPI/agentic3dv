@@ -78,22 +78,24 @@ h1 {
 .figure svg { display: block; width: 100%; height: auto; }
 
 /* Hero figure parts. */
-.grid { stroke: var(--rule); stroke-width: 1; }
+.spoke { stroke: var(--rule); stroke-width: 1.5; stroke-dasharray: 3 6; stroke-linecap: round; }
+.ring { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; }
+.head { fill: var(--ink); }
+.node.code, .label.code { fill: var(--axis-z); }
+.node.exec, .label.exec { fill: var(--axis-x); }
+.node.see, .label.see { fill: var(--axis-y); }
+.icon { fill: none; stroke: #fff; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.icon-fill { fill: #fff; }
+.label { font-family: var(--display); font-weight: 700; font-size: 18px; }
+.bot { fill: var(--ink); }
+.bot-line { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; }
+.bot-eye { fill: var(--paper); }
+.bot-mouth { fill: none; stroke: var(--paper); stroke-width: 4; stroke-linecap: round; }
+.link { stroke: var(--axis-x); stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; }
 .edge { stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
 .edge.hidden { stroke-dasharray: 2 6; opacity: 0.55; }
-.ghost { stroke: var(--select); stroke-width: 1.5; stroke-dasharray: 4 5; opacity: 0.7; }
-.axis { stroke-width: 2.5; stroke-linecap: round; }
-.axis.x, .tip.x { stroke: var(--axis-x); }
-.axis.y, .tip.y { stroke: var(--axis-y); }
-.axis.z, .tip.z { stroke: var(--axis-z); }
-.tip { stroke-width: 0; }
-.tip.x, .label.x { fill: var(--axis-x); }
-.tip.y, .label.y { fill: var(--axis-y); }
-.tip.z, .label.z { fill: var(--axis-z); }
-.label { font-family: var(--display); font-weight: 700; font-size: 17px; }
 .vert { fill: var(--ink); }
 .vert.selected { fill: var(--select); }
-.vert.ghostvert { fill: none; stroke: var(--select); stroke-width: 1.5; }
 
 /* The cube edges draw in once when the page loads. */
 @media (prefers-reduced-motion: no-preference) {
